@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/foodTypeTV"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/descriptionTV"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/priceTV"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="TextView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/minusOne"
+            android:layout_width="4dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="-1" />
+
+        <TextView
+            android:id="@+id/TotalamountTV"
+            android:layout_width="3dp"
+            android:layout_height="65dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TextView"
+            android:freezesText="true"
+            android:textSize="30dp"
+            tools:text="1" />
+
+        <Button
+            android:id="@+id/addOne"
+            android:layout_width="2dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="+1" />
+    </LinearLayout>
+</LinearLayout>
