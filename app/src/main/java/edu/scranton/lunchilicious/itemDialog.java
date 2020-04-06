@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
 public class itemDialog extends AppCompatDialogFragment {
     int mID;
@@ -26,7 +27,8 @@ public class itemDialog extends AppCompatDialogFragment {
     TextView totalAmount;
     Button add;
     Button minus;
-    int numberOfItems;
+    int numberOfItems=1;
+    MyViewModel viewModel;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         if(getArguments() !=null) {
@@ -34,13 +36,14 @@ public class itemDialog extends AppCompatDialogFragment {
             mName = getArguments().getString("NAME");
             mDescription = getArguments().getString("DESCRIPTION");
             mUnitPrice = getArguments().getString("PRICE");
-            numberOfItems=getArguments().getInt("NUMBEROFITEMS");
+          //  numberOfItems=viewModel.NumberOfItems;
            // Toast.makeText(getContext(), numberOfItems, Toast.LENGTH_LONG).show();
         }
 
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v =inflater.inflate(R.layout.menu_item_layout,null);
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
         type= v.findViewById(R.id.foodTypeTV);
         name=v.findViewById(R.id.foodNameTV);
         description=v.findViewById(R.id.descriptionTV);
@@ -52,12 +55,13 @@ public class itemDialog extends AppCompatDialogFragment {
         description.setText(mDescription);
         type.setText(mType);
         totalAmount.setText(String.valueOf(numberOfItems));
-        numberOfItems=getArguments().getInt("NUMBEROFITEMS");
+        numberOfItems=viewModel.NumberOfItems;
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                numberOfItems=numberOfItems+1;
+                viewModel.NumberOfItems+=1;
+                numberOfItems=viewModel.NumberOfItems;
                 totalAmount.setText(""+numberOfItems);
 
             }
@@ -65,7 +69,8 @@ public class itemDialog extends AppCompatDialogFragment {
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numberOfItems-=1;
+                viewModel.NumberOfItems-=1;
+                numberOfItems=viewModel.NumberOfItems;
                 totalAmount.setText(String.valueOf(numberOfItems));
             }
         });
@@ -83,15 +88,6 @@ public class itemDialog extends AppCompatDialogFragment {
             }
         });
         return builder.create();
-    }
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState){
-        numberOfItems= Integer.valueOf(totalAmount.getText().toString());
-        Toast.makeText(getContext(), "SAVE# " + numberOfItems, Toast.LENGTH_LONG).show();
-        savedInstanceState.putInt("NUMBEROFITEMS",numberOfItems);
-        Toast.makeText(getContext(), "SAVE " + numberOfItems, Toast.LENGTH_LONG).show();
-        super.onSaveInstanceState((savedInstanceState));
-
     }
 
     @Override
