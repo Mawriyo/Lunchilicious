@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import androidx.lifecycle.ViewModel;
 
 public class MyViewModel extends ViewModel {
+    public ArrayList<MenuItem> menu;
     int NumberOfItems=1;
     public ArrayList<MenuItem> getMenuItems() {
         ArrayList<MenuItem> items = new ArrayList<>();

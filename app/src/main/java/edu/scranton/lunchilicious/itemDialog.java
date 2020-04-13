@@ -56,6 +56,7 @@ public class itemDialog extends AppCompatDialogFragment {
         type.setText(mType);
         totalAmount.setText(String.valueOf(numberOfItems));
         numberOfItems=viewModel.NumberOfItems;
+        numberOfItems=viewModel.NumberOfItems;
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

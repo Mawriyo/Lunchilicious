@@ -1,6 +1,7 @@
 package edu.scranton.lunchilicious;
-//IMPLEMENT VIEWMODEL HERE.
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,41 +16,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView mRecyclerView;
-    public Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
     MyViewModel viewModel;
-    int mID;
-    String currentType;
-    String currentName;
-    String currentDescription;
-    String currentUnitPrice;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    mRecyclerView = findViewById(R.id.RecycleView);
-    viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-    mRecyclerView.setHasFixedSize(true);
-    mLayoutManager=new LinearLayoutManager(this);
-    mAdapter = new Adapter(viewModel.getMenuItems());
-    mRecyclerView.setLayoutManager(mLayoutManager);
-    mRecyclerView.setAdapter(mAdapter);
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-
-   mAdapter.OnItemClick(new Adapter.OnItemClick() {
-        @Override
-        public void OnItemClick(int position) {
-            MenuItem currentItem = viewModel.getMenuItems().get(position);
-            currentType=viewModel.getMenuItems().get(position).getFoodType();
-            currentName=viewModel.getMenuItems().get(position).getFoodName();
-            currentDescription=viewModel.getMenuItems().get(position).getDescription();
-            currentUnitPrice=viewModel.getMenuItems().get(position).getPrice();
-            openDialog(currentType,currentName, currentDescription, currentUnitPrice);
+        if (savedInstanceState == null) {
+            viewModel.menu = viewModel.getMenuItems();
         }
-    });
+        if(findViewById(R.id.container)!=null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, MenuFragment.newInstance()).commit();
+        }
+        else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.Horizontal, MenuFragment.newInstance()).commit();
+        }
+
     }
     public void openDialog(String Type, String Name,String Description,String UnitPrice){
     itemDialog dialog = new itemDialog();
