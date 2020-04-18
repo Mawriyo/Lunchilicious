@@ -1,22 +1,15 @@
 package edu.scranton.lunchilicious;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-
+import java.util.List;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-
-    private ArrayList<MenuItem> mList;
+    private List<MenuItem> mList;
     private OnItemClick mListener;
     public interface OnItemClick{
         void OnItemClick(int position);
@@ -48,18 +41,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             });
         }
     }
-    public Adapter(Activity main, ArrayList<MenuItem> list) {
-        mList = list;
+    public Adapter(Activity main, List<MenuItem> list) {
+        this.mList = list;
     }
-
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_items,parent,false);
         ViewHolder vH= new ViewHolder(v);
          return vH;
     }
-
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     MenuItem currentItem = mList.get(position);
@@ -67,9 +57,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     holder.mType.setText(currentItem.getFoodType());
     holder.mUnitPrice.setText(currentItem.getPrice());
     }
-
     @Override
     public int getItemCount() {
-        return  mList.size();
+        return mList.size();
+    }
+    public void setMenuItems(List<MenuItem> menuItems) {
+        this.mList = menuItems;
+        notifyDataSetChanged();
     }
 }

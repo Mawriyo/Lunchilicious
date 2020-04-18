@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewItemDialog" >
+
+    <EditText
+        android:id="@+id/nameET"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:hint="Name Of Menu Item"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/descriptionET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="183dp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/priceET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="243dp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="numberDecimal" />
+
+    <RadioGroup
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameET"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="14dp">
+
+        <RadioButton
+            android:id="@+id/hoggieButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:text="Hoggie" />
+
+        <RadioButton
+            android:id="@+id/pizzaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pizza" />
+
+        <RadioButton
+            android:id="@+id/sideButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Side" />
+    </RadioGroup>
+
+</RelativeLayout>

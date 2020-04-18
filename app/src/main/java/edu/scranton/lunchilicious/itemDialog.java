@@ -1,19 +1,15 @@
 package edu.scranton.lunchilicious;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.lifecycle.ViewModelProvider;
-
 public class itemDialog extends AppCompatDialogFragment {
     int mID;
     String mType;
@@ -36,11 +32,7 @@ public class itemDialog extends AppCompatDialogFragment {
             mName = getArguments().getString("NAME");
             mDescription = getArguments().getString("DESCRIPTION");
             mUnitPrice = getArguments().getString("PRICE");
-          //  numberOfItems=viewModel.NumberOfItems;
-           // Toast.makeText(getContext(), numberOfItems, Toast.LENGTH_LONG).show();
         }
-
-
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v =inflater.inflate(R.layout.menu_item_layout,null);
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
@@ -60,11 +52,9 @@ public class itemDialog extends AppCompatDialogFragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 viewModel.NumberOfItems+=1;
                 numberOfItems=viewModel.NumberOfItems;
                 totalAmount.setText(""+numberOfItems);
-
             }
         });
         minus.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +69,6 @@ public class itemDialog extends AppCompatDialogFragment {
         builder.setView(v).setTitle(mName).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
             }
         }).setPositiveButton("Add To Cart", new DialogInterface.OnClickListener() {
             @Override
@@ -90,11 +79,8 @@ public class itemDialog extends AppCompatDialogFragment {
         });
         return builder.create();
     }
-
     @Override
     public void onResume() {
         super.onResume();
-       // totalAmount.setText(""+numberOfItems);
-      //  Toast.makeText(getContext(), "SAVE# " + numberOfItems, Toast.LENGTH_LONG).show();
     }
 }

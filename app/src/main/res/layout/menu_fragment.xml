@@ -13,4 +13,19 @@
         android:layout_height="match_parent"
         android:background="#362126"
         />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/NewItemButton"
+        android:layout_width="76dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+
+        android:scaleType="fitStart"
+        android:src="@drawable/newicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="100dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
